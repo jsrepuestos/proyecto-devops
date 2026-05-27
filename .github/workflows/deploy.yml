@@ -1,0 +1,23 @@
+name: CI-CD DevOps
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Login Docker
+        run: echo "Login step (opcional si usas DockerHub)"
+
+      - name: Build Docker image
+        run: docker build -t mi-web .
+
+      - name: Test container
+        run: docker run -d -p 80:80 mi-web
