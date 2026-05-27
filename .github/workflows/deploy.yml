@@ -22,7 +22,7 @@ jobs:
           script: |
             cd ~/proyecto-devops
             git pull origin main
-            docker build -t mi-web .
             docker stop mi-web || true
             docker rm mi-web || true
+            docker build -t mi-web .
             docker run -d -p 8080:80 --name mi-web mi-web
