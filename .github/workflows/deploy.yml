@@ -21,8 +21,13 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd ~/proyecto-devops
-            git pull origin main
+
+            # detener y limpiar contenedor anterior
             docker stop mi-web || true
             docker rm mi-web || true
+
+            # construir nueva imagen
             docker build -t mi-web .
-            docker run -d -p 8080 --name mi-web
+
+            # ejecutar contenedor
+            docker run -d -p 8080:80 --name mi-web --restart unless-stopped mi-web
