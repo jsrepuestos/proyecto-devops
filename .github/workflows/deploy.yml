@@ -22,11 +22,10 @@ jobs:
           script: |
             cd ~/proyecto-devops
 
-            # detener y limpiar contenedor anterior
-            docker stop mi-web || true
-            docker rm mi-web || true
+            # eliminar contenedor completamente (FORZADO)
+            docker rm -f mi-web || true
 
-            # construir nueva imagen
+            # construir imagen
             docker build -t mi-web .
 
             # ejecutar contenedor
