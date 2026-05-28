@@ -20,9 +20,9 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd ~/proyecto-devops
+            cd ~/proyecto-devops || exit
 
-            git pull
+            git pull origin main || true
 
             docker rm -f mi-web || true
 
