@@ -2,143 +2,329 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>CloudNova DevOps Platform</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSRepuestos - DevOps Platform</title>
     <style>
-        body {
+        * {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0a0f1f;
-            color: #e5e7eb;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* NAVBAR */
-        header {
-            background: #0f172a;
-            padding: 18px 40px;
+        body {
+            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #1a1a3e 50%, #0f0c29 100%);
+            min-height: 100vh;
+            color: #ffffff;
+        }
+
+        /* Efecto de textura */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="rgba(255,255,255,0.03)" d="M0 0h200v200H0z"/><path fill="rgba(77,163,255,0.05)" d="M50 50h100v100H50z"/></svg>');
+            background-size: 30px 30px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+        }
+
+        /* NAVBAR MODERNO */
+        .navbar {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 15px 30px;
+            margin-bottom: 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #1f2a44;
+            border: 1px solid rgba(77, 163, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
 
         .logo {
-            color: #4da3ff;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .nav {
             display: flex;
-            gap: 20px;
+            align-items: center;
+            gap: 10px;
         }
 
-        .nav a {
-            color: #cbd5e1;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .nav a:hover {
-            color: #4da3ff;
-        }
-
-        /* LAYOUT */
-        .container {
-            padding: 40px;
-        }
-
-        .title {
-            font-size: 28px;
-            margin-bottom: 10px;
-            color: #4da3ff;
-        }
-
-        .subtitle {
-            color: #94a3b8;
-            margin-bottom: 30px;
-        }
-
-        /* GRID tipo dashboard */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .box {
-            background: #111a2e;
-            padding: 20px;
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4da3ff, #2563eb);
             border-radius: 12px;
-            border: 1px solid #1f2a44;
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
-        }
-
-        .box h2 {
-            color: #4da3ff;
-            margin-top: 0;
-        }
-
-        .status {
-            margin-top: 10px;
-            color: #22c55e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: bold;
+            font-size: 20px;
         }
 
-        footer {
-            text-align: center;
-            padding: 20px;
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, #4da3ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo-sub {
+            font-size: 12px;
             color: #64748b;
-            font-size: 13px;
-            margin-top: 40px;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #4da3ff;
+            transform: translateY(-2px);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, rgba(77, 163, 255, 0.1), rgba(37, 99, 235, 0.05));
+            border-radius: 30px;
+            padding: 50px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(77, 163, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, #4da3ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            color: #94a3b8;
+            font-size: 18px;
+            max-width: 600px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-top: 20px;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        /* STATS CARDS */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(77, 163, 255, 0.15);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(77, 163, 255, 0.4);
+            box-shadow: 0 10px 40px rgba(77, 163, 255, 0.1);
+        }
+
+        .stat-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .stat-title {
+            font-size: 14px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #4da3ff;
+            
+        }
+
+        .stat-status {
+            font-size: 12px;
+            color: #22c55e;
+            margin-top: 10px;
+        }
+
+        /* TECH SECTION */
+        .tech-section {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        .tech-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #4da3ff;
+        }
+
+        .tech-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tech-item {
+            text-align: center;
+            padding: 15px 25px;
+            background: rgba(77, 163, 255, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(77, 163, 255, 0.2);
+        }
+
+        .tech-item span {
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            font-size: 12px;
+            border-top: 1px solid rgba(77, 163, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .hero {
+                padding: 30px;
+            }
         }
     </style>
 </head>
 
 <body>
+    <div class="container">
+        <!-- Navbar -->
+        <div class="navbar">
+            <div class="logo">
+                <div class="logo-icon">JS</div>
+                <div>
+                    <div class="logo-text">JSRepuestos</div>
+                    <div class="logo-sub">DevOps Infrastructure</div>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="#">Dashboard</a>
+                <a href="#">CI/CD Pipeline</a>
+                <a href="#">Contenedores</a>
+                <a href="#">Monitoreo</a>
+                <a href="#">Docs</a>
+            </div>
+        </div>
 
-<header>
-    <div class="logo">CloudNova DevOps</div>
-    <div class="nav">
-        <a href="#">Dashboard</a>
-        <a href="#">CI/CD</a>
-        <a href="#">Infraestructura</a>
-        <a href="#">Monitoreo</a>
+        <!-- Hero -->
+        <div class="hero">
+            <h1>Infraestructura DevOps</h1>
+            <p>Plataforma empresarial desplegada en Google Cloud con automatización CI/CD, contenedores Docker y monitoreo continuo.</p>
+            <div class="badge">  PRODUCCIÓN ACTIVA</div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"> </div>
+                <div class="stat-title">INFRAESTRUCTURA</div>
+                <div class="stat-value">GCP</div>
+                <div class="stat-status">us-central1-c</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"> </div>
+                <div class="stat-title">CI/CD PIPELINE</div>
+                <div class="stat-value">GitHub Actions</div>
+                <div class="stat-status"> Último deploy: exitoso</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"> </div>
+                <div class="stat-title">CONTENEDORES</div>
+                <div class="stat-value">Docker</div>
+                <div class="stat-status">● mi-web running</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"> </div>
+                <div class="stat-title">ESTADO</div>
+                <div class="stat-value">ONLINE</div>
+                <div class="stat-status">Uptime: 100%</div>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="tech-section">
+            <div class="tech-title">
+                <h3>Tecnologías Implementadas</h3>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item"><span>  Docker</span></div>
+                <div class="tech-item"><span>  Google Cloud</span></div>
+                <div class="tech-item"><span>  GitHub Actions</span></div>
+                <div class="tech-item"><span>  Ubuntu 26.04</span></div>
+                <div class="tech-item"><span>  CI/CD</span></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>JSRepuestos DevOps Platform | Google Cloud Platform | CI/CD Pipeline | Docker Containers</p>
+            <p>© 2026 - Infraestructura Moderna para Sistemas Operativos II</p>
+        </div>
     </div>
-</header>
-
-<div class="container">
-
-    <div class="title">Panel de Infraestructura Cloud</div>
-    <div class="subtitle">Sistema DevOps desplegado en Google Cloud con Docker y CI/CD</div>
-
-    <div class="grid">
-
-        <div class="box">
-            <h2>Estado General</h2>
-            <p>Servidor en producción funcionando correctamente</p>
-            <div class="status">ONLINE</div>
-        </div>
-
-        <div class="box">
-            <h2>CI/CD Pipeline</h2>
-            <p>Deploy automático desde GitHub Actions</p>
-            <div class="status">ACTIVE</div>
-        </div>
-
-        <div class="box">
-            <h2>Contenedores</h2>
-            <p>Docker ejecutando Wicho funciona </p>
-            <div class="status">RUNNING</div>
-        </div>
-
-    </div>
-
-</div>
-
-<footer>
-    CloudNova DevOps Platform • Google Cloud • Docker • CI/CD
-</footer>
 
 </body>
 </html>
