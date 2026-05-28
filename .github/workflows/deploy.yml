@@ -1,31 +1,44 @@
-name: CI-CD Deploy
+name: Deploy to VPS
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main, master ]
+  workflow_dispatch:  # Permite ejecutar manualmente desde GitHub
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Deploy to GCP VM via SSH
+      - name: Deploy to Server
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          script_stop: true
           script: |
-            cd ~/proyecto-devops || exit
-
-            git pull origin main || true
-
-            docker rm -f mi-web || true
-
+            # Crear directorio si no existe
+            mkdir -p ~/proyecto-devops
+            
+            # Ir al directorio
+            cd ~/proyecto-devops
+            
+            # Traer cambios
+            git pull origin main || git clone https://github.com/${{ github.repository }}.git .
+            
+            # Detener contenedor anterior si existe
+            docker stop mi-web || true
+            docker rm mi-web || true
+            
+            # Construir nueva imagen
             docker build -t mi-web .
-
+            
+            # Ejecutar nuevo contenedor
             docker run -d -p 80:80 --name mi-web --restart unless-stopped mi-web
+            
+            # Verificar que está corriendo
+            docker ps | grep mi-web
