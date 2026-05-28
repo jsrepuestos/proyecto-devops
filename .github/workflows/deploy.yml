@@ -9,16 +9,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Debug secrets
-        run: |
-          echo "VPS_HOST existe: ${{ secrets.VPS_HOST != '' }}"
-          echo "VPS_USER existe: ${{ secrets.VPS_USER != '' }}"
-          echo "VPS_SSH_KEY existe: ${{ secrets.VPS_SSH_KEY != '' }}"
-
-      - name: Deploy to GCP VM
+      - name: Deploy
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: 34.70.144.55
@@ -26,13 +20,11 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: 22
           script: |
-            echo " Iniciando despliegue"
-            cd ~/proyecto-devops || git clone https://github.com/${{ github.repository }}.git ~/proyecto-devops
+            cd ~/proyecto-devops || git clone https://github.com/jsrepuestos/proyecto-devops.git ~/proyecto-devops
             cd ~/proyecto-devops
             git pull origin main
             docker build -t mi-web .
             docker stop mi-web || true
             docker rm mi-web || true
             docker run -d -p 80:80 --name mi-web --restart unless-stopped mi-web
-            echo " Despliegue completado!"
-            
+          
