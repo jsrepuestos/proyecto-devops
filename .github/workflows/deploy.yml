@@ -1,31 +1,32 @@
-name: CI-CD Deploy
+name: Deploy to GCP VM
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main, master ]
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Deploy to GCP VM via SSH
+      - name: Deploy to GCP VM
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
           script: |
-            cd ~/proyecto-devops || exit
-
-            git pull origin main || true
-
-            docker rm -f mi-web || true
-
+            echo " Iniciando despliegue - $(date)"
+            cd ~/proyecto-devops || git clone https://github.com/${{ github.repository }}.git ~/proyecto-devops
+            cd ~/proyecto-devops
+            git pull origin main
             docker build -t mi-web .
-
+            docker stop mi-web || true
+            docker rm mi-web || true
             docker run -d -p 80:80 --name mi-web --restart unless-stopped mi-web
+            echo " Despliegue completado!"
+            docker ps | grep mi-web
