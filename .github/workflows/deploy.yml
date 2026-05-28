@@ -1,9 +1,9 @@
-name: Deploy to VPS
+name: Deploy to GCP VM
 
 on:
   push:
     branches: [ main, master ]
-  workflow_dispatch:  # Permite ejecutar manualmente desde GitHub
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -12,33 +12,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy to Server
+      - name: Deploy to GCP VM
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: 22
-          script_stop: true
           script: |
-            # Crear directorio si no existe
-            mkdir -p ~/proyecto-devops
-            
-            # Ir al directorio
+            echo " Iniciando despliegue - $(date)"
+            cd ~/proyecto-devops || git clone https://github.com/${{ github.repository }}.git ~/proyecto-devops
             cd ~/proyecto-devops
-            
-            # Traer cambios
-            git pull origin main || git clone https://github.com/${{ github.repository }}.git .
-            
-            # Detener contenedor anterior si existe
+            git pull origin main
+            docker build -t mi-web .
             docker stop mi-web || true
             docker rm mi-web || true
-            
-            # Construir nueva imagen
-            docker build -t mi-web .
-            
-            # Ejecutar nuevo contenedor
             docker run -d -p 80:80 --name mi-web --restart unless-stopped mi-web
-            
-            # Verificar que está corriendo
+            echo " Despliegue completado!"
             docker ps | grep mi-web
