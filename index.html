@@ -2,23 +2,24 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Proyecto DevOps</title>
+    <title>CloudNova DevOps Platform</title>
 
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #0b1220;
-            color: #ce2e2e;
+            background: #0a0f1f;
+            color: #e5e7eb;
         }
 
         header {
-            background: #111a2e;
+            background: #0f172a;
             padding: 20px;
             text-align: center;
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
-            color: #ff4db5;
+            color: #4da3ff;
+            border-bottom: 1px solid #1f2a44;
         }
 
         .container {
@@ -27,11 +28,13 @@
         }
 
         .box {
-            background: #16213a;
-            padding: 20px;
+            background: #111a2e;
+            padding: 25px;
             margin: 20px auto;
             width: 80%;
-            border-radius: 10px;
+            border-radius: 12px;
+            border: 1px solid #1f2a44;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
         }
 
         h1, h2 {
@@ -41,33 +44,53 @@
         p {
             color: #cbd5e1;
         }
+
+        .status {
+            margin-top: 10px;
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+            font-size: 14px;
+        }
     </style>
 </head>
 
 <body>
 
 <header>
-    Proyecto DevOps
+    CloudNova DevOps Platform
 </header>
 
 <div class="container">
 
     <div class="box">
-        <h1>Proyecto DevOps funcionando</h1>
-        <p>Servidor en Google Cloud con Docker</p>
+        <h1>Infraestructura DevOps en Google Cloud</h1>
+        <p>Servidor desplegado con Docker y automatización CI/CD</p>
+        <div class="status">STATUS: ONLINE</div>
     </div>
 
     <div class="box">
-        <h2>CI/CD Pipeline</h2>
-        <p>Deploy automático desde GitHub Actions</p>
+        <h2>Pipeline CI/CD</h2>
+        <p>Integración continua y despliegue automático desde GitHub Actions</p>
+        <div class="status">PIPELINE ACTIVE</div>
     </div>
 
     <div class="box">
-        <h2>Estado</h2>
-        <p>Deploy final exitoso</p>
+        <h2>Estado del Sistema</h2>
+        <p>Contenedores Docker ejecutándose en máquina virtual GCP</p>
+        <div class="status">DEPLOY SUCCESS</div>
     </div>
 
 </div>
+
+<footer>
+    CloudNova DevOps • Google Cloud Platform • Docker • CI/CD
+</footer>
 
 </body>
 </html>
