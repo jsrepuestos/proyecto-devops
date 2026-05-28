@@ -23,15 +23,14 @@ jobs:
         run: |
           ssh -i ~/.ssh/id_ed25519 jsrepuestosservicios@34.70.144.55 "echo '✅ SSH OK'"
 
-      - name: Deploy
+      - name: Deploy with Docker Compose
         run: |
           ssh -i ~/.ssh/id_ed25519 jsrepuestosservicios@34.70.144.55 << 'EOF'
             cd ~/proyecto-devops || git clone https://github.com/jsrepuestos/proyecto-devops.git ~/proyecto-devops
             cd ~/proyecto-devops
             git pull origin main
-            docker build -t mi-web .
-            docker stop mi-web || true
-            docker rm mi-web || true
-            docker run -d -p 80:80 --name mi-web --restart unless-stopped mi-web
-            echo "  Deploy completado"
+            docker compose down
+            docker compose up -d --build
+            docker compose ps
+            echo "Despliegue completado con Base de Datos"
           EOF
