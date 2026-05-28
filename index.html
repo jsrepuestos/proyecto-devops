@@ -12,37 +12,71 @@
             color: #e5e7eb;
         }
 
+        /* NAVBAR */
         header {
             background: #0f172a;
-            padding: 20px;
-            text-align: center;
-            font-size: 26px;
-            font-weight: bold;
-            color: #4da3ff;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             border-bottom: 1px solid #1f2a44;
         }
 
+        .logo {
+            color: #4da3ff;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .nav a:hover {
+            color: #4da3ff;
+        }
+
+        /* LAYOUT */
         .container {
             padding: 40px;
-            text-align: center;
+        }
+
+        .title {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #4da3ff;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
+
+        /* GRID tipo dashboard */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
 
         .box {
             background: #111a2e;
-            padding: 25px;
-            margin: 20px auto;
-            width: 80%;
+            padding: 20px;
             border-radius: 12px;
             border: 1px solid #1f2a44;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
         }
 
-        h1, h2 {
+        .box h2 {
             color: #4da3ff;
-        }
-
-        p {
-            color: #cbd5e1;
+            margin-top: 0;
         }
 
         .status {
@@ -55,7 +89,8 @@
             text-align: center;
             padding: 20px;
             color: #64748b;
-            font-size: 14px;
+            font-size: 13px;
+            margin-top: 40px;
         }
     </style>
 </head>
@@ -63,33 +98,46 @@
 <body>
 
 <header>
-    CloudNova DevOps Platform
+    <div class="logo">CloudNova DevOps</div>
+    <div class="nav">
+        <a href="#">Dashboard</a>
+        <a href="#">CI/CD</a>
+        <a href="#">Infraestructura</a>
+        <a href="#">Monitoreo</a>
+    </div>
 </header>
 
 <div class="container">
 
-    <div class="box">
-        <h1>Infraestructura DevOps en Google Cloud</h1>
-        <p>Servidor desplegado con Docker y automatización CI/CD</p>
-        <div class="status">STATUS: ONLINE</div>
-    </div>
+    <div class="title">Panel de Infraestructura Cloud</div>
+    <div class="subtitle">Sistema DevOps desplegado en Google Cloud con Docker y CI/CD</div>
 
-    <div class="box">
-        <h2>Pipeline CI/CD</h2>
-        <p>Integración continua y despliegue automático desde GitHub Actions</p>
-        <div class="status">PIPELINE ACTIVE</div>
-    </div>
+    <div class="grid">
 
-    <div class="box">
-        <h2>Estado del Sistema</h2>
-        <p>Contenedores Docker ejecutándose en máquina virtual GCP</p>
-        <div class="status">DEPLOY SUCCESS</div>
+        <div class="box">
+            <h2>Estado General</h2>
+            <p>Servidor en producción funcionando correctamente</p>
+            <div class="status">ONLINE</div>
+        </div>
+
+        <div class="box">
+            <h2>CI/CD Pipeline</h2>
+            <p>Deploy automático desde GitHub Actions</p>
+            <div class="status">ACTIVE</div>
+        </div>
+
+        <div class="box">
+            <h2>Contenedores</h2>
+            <p>Docker ejecutando la aplicación web</p>
+            <div class="status">RUNNING</div>
+        </div>
+
     </div>
 
 </div>
 
 <footer>
-    CloudNova DevOps • Google Cloud Platform • Docker • CI/CD
+    CloudNova DevOps Platform • Google Cloud • Docker • CI/CD
 </footer>
 
 </body>

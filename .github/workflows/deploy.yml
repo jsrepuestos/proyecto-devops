@@ -22,11 +22,10 @@ jobs:
           script: |
             cd ~/proyecto-devops
 
-            # eliminar contenedor completamente (FORZADO)
+            git pull
+
             docker rm -f mi-web || true
 
-            # construir imagen
             docker build -t mi-web .
 
-            # ejecutar contenedor
-            docker run -d -p 8080:80 --name mi-web --restart unless-stopped mi-web
+            docker run -d -p 80:80 --name mi-web --restart unless-stopped mi-web
