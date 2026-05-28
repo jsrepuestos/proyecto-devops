@@ -12,6 +12,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Debug SSH key
+        run: |
+          echo "=== Verificando SSH key ==="
+          echo "Key length: ${# secrets.VPS_SSH_KEY }"
+          echo "Primeros 50 caracteres: ${{ secrets.VPS_SSH_KEY }}"
+
+      - name: Test SSH connection
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 34.70.144.55
+          username: jsrepuestosservicios
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          script: |
+            echo " Conexión SSH exitosa"
+            hostname
+            whoami
+
       - name: Deploy
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -20,6 +38,7 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: 22
           script: |
+            echo " Iniciando despliegue"
             cd ~/proyecto-devops || git clone https://github.com/jsrepuestos/proyecto-devops.git ~/proyecto-devops
             cd ~/proyecto-devops
             git pull origin main
@@ -27,4 +46,5 @@ jobs:
             docker stop mi-web || true
             docker rm mi-web || true
             docker run -d -p 80:80 --name mi-web --restart unless-stopped mi-web
-          
+            docker ps | grep mi-web
+            echo " Despliegue completado"
