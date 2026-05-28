@@ -3,235 +3,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JSRepuestosServicios Cloud Platform</title>
+<title>JSRepuestosServicios | Cloud Dashboard</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Inter',sans-serif;
-}
-
 body{
+  margin:0;
+  font-family:Inter;
   background:#0b1220;
   color:white;
-  display:flex;
 }
 
-/* SIDEBAR AWS STYLE */
-.sidebar{
-  width:260px;
-  height:100vh;
-  background:#0f172a;
+header{
   padding:20px;
-  border-right:1px solid rgba(255,255,255,0.08);
-}
-
-.sidebar h2{
-  color:#38bdf8;
-  margin-bottom:30px;
-}
-
-.sidebar a{
-  display:block;
-  color:#cbd5e1;
-  text-decoration:none;
-  padding:12px;
-  border-radius:8px;
-  margin-bottom:10px;
-  transition:0.3s;
-}
-
-.sidebar a:hover{
-  background:#1e293b;
-  color:#38bdf8;
-}
-
-/* MAIN */
-.main{
-  flex:1;
-  padding:30px;
-}
-
-/* HEADER */
-.header{
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  margin-bottom:30px;
+  background:#0f172a;
+  border-bottom:1px solid #1f2937;
 }
 
-.header h1{
-  font-size:28px;
-}
-
-.status-live{
-  color:#22c55e;
+.logo{
+  color:#38bdf8;
   font-weight:700;
 }
 
-/* GRID DASHBOARD */
-.grid{
+.hero{
+  padding:60px;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:40px;
+}
+
+.hero span{
+  color:#38bdf8;
+}
+
+.cards{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+  padding:30px;
 }
 
 .card{
   background:#111827;
   padding:20px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,0.06);
-}
-
-.card h3{
-  color:#38bdf8;
-  margin-bottom:10px;
+  border-radius:12px;
+  border:1px solid #1f2937;
 }
 
 .ok{
   color:#22c55e;
-  font-weight:700;
+  font-weight:bold;
 }
 
-/* ARCHITECTURE */
-.arch{
-  margin-top:30px;
+.dashboard{
+  padding:30px;
+}
+
+.box{
   background:#111827;
-  padding:25px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,0.06);
+  padding:20px;
+  border-radius:12px;
+  margin-top:10px;
+  border:1px solid #1f2937;
+}
+
+.arch{
+  padding:30px;
+  background:#0f172a;
+  margin:30px;
+  border-radius:12px;
+  border:1px solid #1f2937;
   line-height:1.8;
 }
 
-/* PIPELINE */
-.pipeline{
-  margin-top:30px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
-}
-
-.step{
-  background:#0f172a;
-  padding:20px;
-  border-radius:12px;
+footer{
   text-align:center;
-  border:1px solid rgba(255,255,255,0.06);
+  padding:20px;
+  color:#94a3b8;
 }
-
-.step span{
-  display:block;
-  margin-top:10px;
-  color:#22c55e;
-  font-weight:700;
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- SIDEBAR -->
-<div class="sidebar">
-  <h2>☁ AWS Console</h2>
-  <a href="#">Dashboard</a>
-  <a href="#">EC2 Instances</a>
-  <a href="#">Docker Cluster</a>
-  <a href="#">CI/CD Pipeline</a>
-  <a href="#">Monitoring</a>
-  <a href="#">Security</a>
+<header>
+  <div class="logo">JSRepuestosServicios ☁</div>
+  <div>LIVE SYSTEM 🟢</div>
+</header>
+
+<div class="hero">
+  <h1>Infraestructura <span>DevOps</span> en Google Cloud</h1>
+  <p>Docker + CI/CD + VM + Deploy automático</p>
 </div>
 
-<!-- MAIN -->
-<div class="main">
+<div class="cards">
 
-  <div class="header">
-    <h1>JSRepuestosServicios Cloud Platform</h1>
-    <div class="status-live">LIVE SYSTEM 🟢</div>
+  <div class="card">
+    <h3>Docker</h3>
+    <p class="ok">RUNNING</p>
   </div>
 
-  <!-- DASHBOARD -->
-  <div class="grid">
-
-    <div class="card">
-      <h3>CI/CD Pipeline</h3>
-      <p class="ok">ACTIVE</p>
-    </div>
-
-    <div class="card">
-      <h3>Docker Cluster</h3>
-      <p class="ok">RUNNING</p>
-    </div>
-
-    <div class="card">
-      <h3>Cloud VM (GCP/AWS)</h3>
-      <p class="ok">ONLINE</p>
-    </div>
-
-    <div class="card">
-      <h3>Load Balancer</h3>
-      <p class="ok">STABLE</p>
-    </div>
-
+  <div class="card">
+    <h3>CI/CD</h3>
+    <p class="ok">ACTIVE</p>
   </div>
 
-  <!-- ARCHITECTURE -->
-  <div class="arch">
-    <h2>☁ Arquitectura DevOps</h2>
-    <br>
-
-    Usuario  
-    ↓  
-    Load Balancer  
-    ↓  
-    Docker Cluster (Kubernetes / Docker)  
-    ↓  
-    Web Application  
-    ↓  
-    Database  
-
-    <br><br>
-
-    GitHub Repository  
-    ↓  
-    GitHub Actions CI/CD  
-    ↓  
-    Docker Build  
-    ↓  
-    Deploy Automático en Cloud
+  <div class="card">
+    <h3>Cloud VM</h3>
+    <p class="ok">ONLINE</p>
   </div>
 
-  <!-- PIPELINE -->
-  <div class="pipeline">
-
-    <div class="step">
-      Git Clone
-      <span>✔ DONE</span>
-    </div>
-
-    <div class="step">
-      Build Docker
-      <span>✔ DONE</span>
-    </div>
-
-    <div class="step">
-      Test App
-      <span>✔ DONE</span>
-    </div>
-
-    <div class="step">
-      Deploy Cloud
-      <span>✔ DONE</span>
-    </div>
-
+  <div class="card">
+    <h3>Deploy</h3>
+    <p class="ok">SUCCESS</p>
   </div>
 
 </div>
+
+<div class="dashboard">
+  <h2>Estado del Sistema</h2>
+
+  <div class="box">Uptime: 99.9%</div>
+  <div class="box">Servidor: Activo</div>
+  <div class="box">Contenedor: Running</div>
+</div>
+
+<div class="arch">
+  <h2>Arquitectura Cloud</h2>
+  Usuario → Load Balancer → Docker → Web App → Google Cloud VM
+  <br><br>
+  GitHub → CI/CD → Build → Deploy automático
+</div>
+
+<footer>
+  JSRepuestosServicios © 2026 | DevOps Cloud Project
+</footer>
 
 </body>
 </html>
