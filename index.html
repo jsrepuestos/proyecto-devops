@@ -2,14 +2,14 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>CloudNova DevOps Platform</title>
+    <title>Proyecto DevOps</title>
 
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background: #0b1220;
-            color: white;
+            color: #ffffff;
         }
 
         header {
@@ -26,25 +26,20 @@
             text-align: center;
         }
 
-        .card {
+        .box {
             background: #16213a;
             padding: 20px;
             margin: 20px auto;
             width: 80%;
-            border-radius: 12px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.4);
+            border-radius: 10px;
         }
 
-        .status {
-            color: #22c55e;
-            font-weight: bold;
+        h1, h2 {
+            color: #4da3ff;
         }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            color: #888;
+        p {
+            color: #cbd5e1;
         }
     </style>
 </head>
@@ -52,34 +47,27 @@
 <body>
 
 <header>
-      CloudNova DevOps Dashboard
+    Proyecto DevOps
 </header>
 
 <div class="container">
 
-    <div class="card">
-        <h2>Proyecto DevOps funcionando</h2>
+    <div class="box">
+        <h1>Proyecto DevOps funcionando</h1>
         <p>Servidor en Google Cloud con Docker</p>
-        <p class="status">STATUS: ONLINE 🟢</p>
     </div>
 
-    <div class="card">
-        <h3>CI/CD Pipeline</h3>
-        <p>GitHub Actions / Deploy Automático</p>
-        <p class="status">ACTIVE 🟢</p>
+    <div class="box">
+        <h2>CI/CD Pipeline</h2>
+        <p>Deploy automático desde GitHub Actions</p>
     </div>
 
-    <div class="card">
-        <h3>Deploy Status</h3>
-        <p>Última versión desplegada correctamente</p>
-        <p class="status">SUCCESS 🟢</p>
+    <div class="box">
+        <h2>Estado</h2>
+        <p>Deploy final exitoso</p>
     </div>
 
 </div>
-
-<footer>
-    © 2026 CloudNova Solutions - DevOps & Cloud Engineering
-</footer>
 
 </body>
 </html>
