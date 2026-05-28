@@ -1,147 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JSRepuestosServicios | Cloud Dashboard</title>
+    <meta charset="UTF-8">
+    <title>CloudNova DevOps Platform</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0b1220;
+            color: white;
+        }
 
-<style>
-body{
-  margin:0;
-  font-family:Inter;
-  background:#0b1220;
-  color:white;
-}
+        header {
+            background: #111a2e;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #4da3ff;
+        }
 
-header{
-  padding:20px;
-  display:flex;
-  justify-content:space-between;
-  background:#0f172a;
-  border-bottom:1px solid #1f2937;
-}
+        .container {
+            padding: 40px;
+            text-align: center;
+        }
 
-.logo{
-  color:#38bdf8;
-  font-weight:700;
-}
+        .card {
+            background: #16213a;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.4);
+        }
 
-.hero{
-  padding:60px;
-  text-align:center;
-}
+        .status {
+            color: #22c55e;
+            font-weight: bold;
+        }
 
-.hero h1{
-  font-size:40px;
-}
-
-.hero span{
-  color:#38bdf8;
-}
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:15px;
-  padding:30px;
-}
-
-.card{
-  background:#111827;
-  padding:20px;
-  border-radius:12px;
-  border:1px solid #1f2937;
-}
-
-.ok{
-  color:#22c55e;
-  font-weight:bold;
-}
-
-.dashboard{
-  padding:30px;
-}
-
-.box{
-  background:#111827;
-  padding:20px;
-  border-radius:12px;
-  margin-top:10px;
-  border:1px solid #1f2937;
-}
-
-.arch{
-  padding:30px;
-  background:#0f172a;
-  margin:30px;
-  border-radius:12px;
-  border:1px solid #1f2937;
-  line-height:1.8;
-}
-
-footer{
-  text-align:center;
-  padding:20px;
-  color:#94a3b8;
-}
-</style>
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #888;
+        }
+    </style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">JSRepuestosServicios ☁</div>
-  <div>LIVE SYSTEM 🟢</div>
+    🚀 CloudNova DevOps Dashboard
 </header>
 
-<div class="hero">
-  <h1>Infraestructura <span>DevOps</span> en Google Cloud</h1>
-  <p>Docker + CI/CD + VM + Deploy automático</p>
-</div>
+<div class="container">
 
-<div class="cards">
+    <div class="card">
+        <h2>Proyecto DevOps funcionando</h2>
+        <p>Servidor en Google Cloud con Docker</p>
+        <p class="status">STATUS: ONLINE 🟢</p>
+    </div>
 
-  <div class="card">
-    <h3>Docker</h3>
-    <p class="ok">RUNNING</p>
-  </div>
+    <div class="card">
+        <h3>CI/CD Pipeline</h3>
+        <p>GitHub Actions / Deploy Automático</p>
+        <p class="status">ACTIVE 🟢</p>
+    </div>
 
-  <div class="card">
-    <h3>CI/CD</h3>
-    <p class="ok">ACTIVE</p>
-  </div>
+    <div class="card">
+        <h3>Deploy Status</h3>
+        <p>Última versión desplegada correctamente</p>
+        <p class="status">SUCCESS 🟢</p>
+    </div>
 
-  <div class="card">
-    <h3>Cloud VM</h3>
-    <p class="ok">ONLINE</p>
-  </div>
-
-  <div class="card">
-    <h3>Deploy</h3>
-    <p class="ok">SUCCESS</p>
-  </div>
-
-</div>
-
-<div class="dashboard">
-  <h2>Estado del Sistema</h2>
-
-  <div class="box">Uptime: 99.9%</div>
-  <div class="box">Servidor: Activo</div>
-  <div class="box">Contenedor: Running</div>
-</div>
-
-<div class="arch">
-  <h2>Arquitectura Cloud</h2>
-  Usuario → Load Balancer → Docker → Web App → Google Cloud VM
-  <br><br>
-  GitHub → CI/CD → Build → Deploy automático
 </div>
 
 <footer>
-  JSRepuestosServicios © 2026 | DevOps Cloud Project
+    © 2026 CloudNova Solutions - DevOps & Cloud Engineering
 </footer>
 
 </body>
