@@ -12,13 +12,320 @@
         }
 
         body {
-            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0a0f1f 0%, #0f172a 50%, #0a0f1f 100%);
+            min-height: 100vh;
+            color: #e5e7eb;
+        }
+
+        /* Textura de fondo */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 25% 50%, rgba(77, 163, 255, 0.04) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 50px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px 40px;
+            margin-bottom: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(77, 163, 255, 0.2);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .logo-name {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #4da3ff, #60a5fa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo-badge {
+            font-size: 13px;
+            color: #64748b;
+            background: rgba(100, 116, 139, 0.25);
+            padding: 4px 10px;
+            border-radius: 25px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #4da3ff;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, rgba(77, 163, 255, 0.08), rgba(37, 99, 235, 0.04));
+            border-radius: 28px;
+            padding: 55px 45px;
+            margin-bottom: 50px;
+            border: 1px solid rgba(77, 163, 255, 0.15);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ffffff, #4da3ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            color: #94a3b8;
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: rgba(34, 197, 94, 0.12);
+            color: #22c55e;
+            padding: 8px 18px;
+            border-radius: 35px;
+            font-size: 13px;
+            margin-top: 25px;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        /* CARDS - MÁS GRANDES */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 35px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 35px 30px;
+            border: 1px solid rgba(77, 163, 255, 0.12);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(77, 163, 255, 0.35);
+        }
+
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #4da3ff;
+            margin-bottom: 15px;
+        }
+
+        .card-desc {
+            font-size: 15px;
+            color: #94a3b8;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .card-status {
+            font-size: 13px;
+            color: #22c55e;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-status::before {
+            content: "●";
+            font-size: 11px;
+        }
+
+        /* TECH SECTION */
+        .tech-section {
+            background: rgba(0, 0, 0, 0.35);
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .tech-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .tech-item {
+            background: rgba(77, 163, 255, 0.1);
+            padding: 10px 25px;
+            border-radius: 35px;
+            font-size: 14px;
+            color: #94a3b8;
+            border: 1px solid rgba(77, 163, 255, 0.2);
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+            font-size: 13px;
+            border-top: 1px solid rgba(77, 163, 255, 0.1);
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px; }
+            .navbar { flex-direction: column; gap: 20px; }
+            .hero h1 { font-size: 32px; }
+            .hero { padding: 35px 25px; }
+            .card { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <span class="logo-name">JSRepuestos</span>
+            <span class="logo-badge">DevOps</span>
+        </div>
+        <div class="nav-links">
+            <a href="#">Dashboard</a>
+            <a href="#">CI/CD</a>
+            <a href="#">Infraestructura</a>
+            <a href="#">Monitoreo</a>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero">
+        <h1>Infraestructura DevOps</h1>
+        <p>Plataforma empresarial desplegada en Google Cloud con automatizacion CI/CD y contenedores Docker</p>
+        <div class="status-badge">SISTEMA OPERATIVO</div>
+    </div>
+
+    <!-- Cards -->
+    <div class="cards-grid">
+        <div class="card">
+            <div class="card-icon">☁️</div>
+            <div class="card-title">Infraestructura Cloud</div>
+            <div class="card-desc">Servidor en Google Cloud Platform (GCP) en la zona us-central1-c, con alta disponibilidad y monitoreo continuo.</div>
+            <div class="card-status">ONLINE</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">🔄</div>
+            <div class="card-title">CI/CD Pipeline</div>
+            <div class="card-desc">GitHub Actions con despliegue automatico al realizar push a la rama principal, asegurando integracion y entrega continua.</div>
+            <div class="card-status">ACTIVO</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">🐳</div>
+            <div class="card-title">Contenedores</div>
+            <div class="card-desc">Aplicacion contenerizada con Docker, ejecutandose en modo produccion con reinicio automatico y puerto 80 expuesto.</div>
+            <div class="card-status">EJECUTANDO</div>
+        </div>
+    </div>
+
+    <!-- Tecnologias -->
+    <div class="tech-section">
+        <div class="tech-icons">
+            <span class="tech-item">Docker</span>
+            <span class="tech-item">Google Cloud</span>
+            <span class="tech-item">GitHub Actions</span>
+            <span class="tech-item">Ubuntu 26.04</span>
+            <span class="tech-item">CI/CD</span>
+            <span class="tech-item">Nginx</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>JSRepuestos DevOps Platform | Google Cloud Platform | CI/CD Pipeline | Docker Containers</p>
+        <p>2026 - Proyecto Sistemas Operativos II - Infraestructura Moderna</p>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cat > index.php << 'EOF'
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSRepuestos - DevOps Platform</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
             background: linear-gradient(135deg, #0f0c29 0%, #1a1a3e 50%, #0f0c29 100%);
             min-height: 100vh;
             color: #ffffff;
         }
-
-        /* Efecto de textura */
         body::before {
             content: "";
             position: fixed;
@@ -31,16 +338,8 @@
             pointer-events: none;
             z-index: 0;
         }
-
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px 40px;
-        }
-
-        /* NAVBAR MODERNO */
+        .container { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 20px 40px; }
+        
         .navbar {
             background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(10px);
@@ -53,58 +352,14 @@
             border: 1px solid rgba(77, 163, 255, 0.2);
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #4da3ff, #2563eb);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 20px;
-        }
-
-        .logo-text {
-            font-size: 24px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #ffffff, #4da3ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .logo-sub {
-            font-size: 12px;
-            color: #64748b;
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: #4da3ff;
-            transform: translateY(-2px);
-        }
-
-        /* HERO SECTION */
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, #4da3ff, #2563eb); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 20px; }
+        .logo-text { font-size: 24px; font-weight: 700; background: linear-gradient(135deg, #ffffff, #4da3ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .logo-sub { font-size: 12px; color: #64748b; letter-spacing: 1px; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: #94a3b8; text-decoration: none; transition: all 0.3s; font-weight: 500; cursor: pointer; }
+        .nav-links a:hover, .nav-links a.active { color: #4da3ff; transform: translateY(-2px); }
+        
         .hero {
             background: linear-gradient(135deg, rgba(77, 163, 255, 0.1), rgba(37, 99, 235, 0.05));
             border-radius: 30px;
@@ -112,42 +367,18 @@
             margin-bottom: 40px;
             border: 1px solid rgba(77, 163, 255, 0.2);
             backdrop-filter: blur(5px);
+            text-align: center;
         }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #fff, #4da3ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero p {
-            color: #94a3b8;
-            font-size: 18px;
-            max-width: 600px;
-        }
-
-        .badge {
-            display: inline-block;
-            background: rgba(34, 197, 94, 0.2);
-            color: #22c55e;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            margin-top: 20px;
-            border: 1px solid rgba(34, 197, 94, 0.3);
-        }
-
-        /* STATS CARDS */
+        .hero h1 { font-size: 48px; margin-bottom: 20px; background: linear-gradient(135deg, #fff, #4da3ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .hero p { color: #94a3b8; font-size: 18px; max-width: 600px; margin: 0 auto; }
+        .badge { display: inline-block; background: rgba(34, 197, 94, 0.2); color: #22c55e; padding: 5px 12px; border-radius: 20px; font-size: 12px; margin-top: 20px; border: 1px solid rgba(34, 197, 94, 0.3); }
+        
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
             margin-bottom: 40px;
         }
-
         .stat-card {
             background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(10px);
@@ -156,175 +387,155 @@
             border: 1px solid rgba(77, 163, 255, 0.15);
             transition: all 0.3s;
         }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(77, 163, 255, 0.4);
-            box-shadow: 0 10px 40px rgba(77, 163, 255, 0.1);
-        }
-
-        .stat-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
-
-        .stat-title {
-            font-size: 14px;
-            color: #64748b;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .stat-value {
-            font-size: 32px;
-            font-weight: 700;
-            color: #4da3ff;
-            
-        }
-
-        .stat-status {
-            font-size: 12px;
-            color: #22c55e;
-            margin-top: 10px;
-        }
-
-        /* TECH SECTION */
-        .tech-section {
-            background: rgba(0, 0, 0, 0.3);
+        .stat-card:hover { transform: translateY(-5px); border-color: rgba(77, 163, 255, 0.4); box-shadow: 0 10px 40px rgba(77, 163, 255, 0.1); }
+        .stat-icon { font-size: 40px; margin-bottom: 15px; }
+        .stat-title { font-size: 14px; color: #64748b; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+        .stat-value { font-size: 32px; font-weight: 700; color: #4da3ff; }
+        .stat-status { font-size: 12px; color: #22c55e; margin-top: 10px; }
+        
+        .productos-section {
+            background: rgba(15, 23, 42, 0.9);
             border-radius: 20px;
             padding: 30px;
-            margin-bottom: 40px;
+            margin-top: 20px;
+            display: none;
         }
-
-        .tech-title {
-            text-align: center;
-            margin-bottom: 30px;
+        .productos-section.active { display: block; }
+        .productos-table { width: 100%; border-collapse: collapse; }
+        .productos-table th, .productos-table td { padding: 12px; text-align: left; border-bottom: 1px solid rgba(77,163,255,0.2); }
+        .productos-table th { background: rgba(77,163,255,0.2); color: #4da3ff; }
+        .btn-volver {
+            background: rgba(77,163,255,0.2);
+            border: 1px solid #4da3ff;
             color: #4da3ff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 20px;
         }
-
-        .tech-grid {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .tech-item {
-            text-align: center;
-            padding: 15px 25px;
-            background: rgba(77, 163, 255, 0.1);
-            border-radius: 12px;
-            border: 1px solid rgba(77, 163, 255, 0.2);
-        }
-
-        .tech-item span {
-            font-size: 14px;
-            color: #94a3b8;
-        }
-
-        /* FOOTER */
-        .footer {
-            text-align: center;
-            padding: 30px;
-            color: #64748b;
-            font-size: 12px;
-            border-top: 1px solid rgba(77, 163, 255, 0.1);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-            .navbar {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .hero h1 {
-                font-size: 32px;
-            }
-            .hero {
-                padding: 30px;
-            }
-        }
+        .btn-volver:hover { background: #4da3ff; color: #fff; }
+        
+        .tech-section { background: rgba(0, 0, 0, 0.3); border-radius: 20px; padding: 30px; margin-bottom: 40px; text-align: center; }
+        .tech-title { text-align: center; margin-bottom: 30px; color: #4da3ff; }
+        .tech-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+        .tech-item { text-align: center; padding: 15px 25px; background: rgba(77, 163, 255, 0.1); border-radius: 12px; border: 1px solid rgba(77, 163, 255, 0.2); }
+        
+        .footer { text-align: center; padding: 30px; color: #64748b; font-size: 12px; border-top: 1px solid rgba(77, 163, 255, 0.1); }
+        @media (max-width: 768px) { .container { padding: 15px; } .navbar { flex-direction: column; gap: 15px; } .hero h1 { font-size: 32px; } }
     </style>
 </head>
-
 <body>
-    <div class="container">
-        <!-- Navbar -->
-        <div class="navbar">
-            <div class="logo">
-                <div class="logo-icon">JS</div>
-                <div>
-                    <div class="logo-text">JSRepuestos</div>
-                    <div class="logo-sub">DevOps Infrastructure</div>
-                </div>
-            </div>
-            <div class="nav-links">
-                <a href="#">Dashboard</a>
-                <a href="#">CI/CD Pipeline</a>
-                <a href="#">Contenedores</a>
-                <a href="#">Monitoreo</a>
-                <a href="#">Docs</a>
-            </div>
-        </div>
-
-        <!-- Hero -->
-        <div class="hero">
-            <h1>Infraestructura DevOps</h1>
-            <p>Plataforma empresarial desplegada en Google Cloud con automatización CI/CD, contenedores Docker y monitoreo continuo.</p>
-            <div class="badge">  PRODUCCIÓN ACTIVA</div>
-        </div>
-
-        <!-- Stats Grid -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon"> </div>
-                <div class="stat-title">INFRAESTRUCTURA</div>
-                <div class="stat-value">GCP</div>
-                <div class="stat-status">us-central1-c</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon"> </div>
-                <div class="stat-title">CI/CD PIPELINE</div>
-                <div class="stat-value">GitHub Actions</div>
-                <div class="stat-status"> Último deploy: exitoso</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon"> </div>
-                <div class="stat-title">CONTENEDORES</div>
-                <div class="stat-value">Docker</div>
-                <div class="stat-status">● mi-web running</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon"> </div>
-                <div class="stat-title">ESTADO</div>
-                <div class="stat-value">ONLINE</div>
-                <div class="stat-status">Uptime: 100%</div>
-            </div>
-        </div>
-
-        <!-- Tech Stack -->
-        <div class="tech-section">
-            <div class="tech-title">
-                <h3>Tecnologías Implementadas</h3>
-            </div>
-            <div class="tech-grid">
-                <div class="tech-item"><span>  Docker</span></div>
-                <div class="tech-item"><span>  Google Cloud</span></div>
-                <div class="tech-item"><span>  GitHub Actions</span></div>
-                <div class="tech-item"><span>  Ubuntu 26.04</span></div>
-                <div class="tech-item"><span>  CI/CD</span></div>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            <p>JSRepuestos DevOps Platform | Google Cloud Platform | CI/CD Pipeline | Docker Containers</p>
-            <p>© 2026 - Infraestructura Moderna para Sistemas Operativos II</p>
+<div class="container">
+    <div class="navbar">
+        <div class="logo"><div class="logo-icon">JS</div><div><div class="logo-text">JSRepuestos</div><div class="logo-sub">DevOps Infrastructure</div></div></div>
+        <div class="nav-links">
+            <a onclick="showSection('dashboard')" id="btn-dashboard" class="active">Dashboard</a>
+            <a onclick="showSection('productos')" id="btn-productos">Productos</a>
+            <a href="#">CI/CD Pipeline</a>
+            <a href="#">Contenedores</a>
+            <a href="#">Monitoreo</a>
         </div>
     </div>
 
+    <div id="dashboard-section">
+        <div class="hero">
+            <h1>Infraestructura DevOps</h1>
+            <p>Plataforma empresarial desplegada en Google Cloud con automatización CI/CD, contenedores Docker y monitoreo continuo.</p>
+            <div class="badge">● PRODUCCIÓN ACTIVA</div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-icon"></div><div class="stat-title">INFRAESTRUCTURA</div><div class="stat-value">GCP</div><div class="stat-status">us-central1-c</div></div>
+            <div class="stat-card"><div class="stat-icon"></div><div class="stat-title">CI/CD PIPELINE</div><div class="stat-value">GitHub Actions</div><div class="stat-status"> Último deploy: exitoso</div></div>
+            <div class="stat-card"><div class="stat-icon"></div><div class="stat-title">CONTENEDORES</div><div class="stat-value">Docker</div><div class="stat-status">● mi-web running</div></div>
+            <div class="stat-card"><div class="stat-icon"></div><div class="stat-title">ESTADO</div><div class="stat-value">ONLINE</div><div class="stat-status">Uptime: 100%</div></div>
+        </div>
+
+        <div class="tech-section">
+            <div class="tech-title"><h3>Tecnologías Implementadas</h3></div>
+            <div class="tech-grid">
+                <div class="tech-item"><span> Docker</span></div>
+                <div class="tech-item"><span> Google Cloud</span></div>
+                <div class="tech-item"><span> GitHub Actions</span></div>
+                <div class="tech-item"><span> Ubuntu 26.04</span></div>
+                <div class="tech-item"><span> PostgreSQL</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="productos-section" class="productos-section">
+        <button class="btn-volver" onclick="showSection('dashboard')">← Volver al Dashboard</button>
+        <h2 style="color:#4da3ff; margin-bottom:20px;"> Catálogo de Productos</h2>
+        <?php
+        $host = 'db';
+        $dbname = 'proyectodb';
+        $user = 'jsrepuestos';
+        $password = 'devops2026';
+
+        try {
+            $pdo = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+            $stmt = $pdo->query("SELECT id, nombre, descripcion, precio, stock FROM productos ORDER BY id");
+            $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            if (count($productos) > 0) {
+                echo '<table class="productos-table">';
+                echo '<tr><th>ID</th><th>Nombre</th><th>Descripción</th><th>Precio</th><th>Stock</th></tr>';
+                foreach ($productos as $p) {
+                    echo '<tr>';
+                    echo '<td>' . $p['id'] . '</td>';
+                    echo '<td>' . htmlspecialchars($p['nombre']) . '</td>';
+                    echo '<td>' . htmlspecialchars($p['descripcion'] ?? '') . '</td>';
+                    echo '<td>$' . number_format($p['precio'], 2) . '</td>';
+                    echo '<td>' . $p['stock'] . '</td>';
+                    echo '</tr>';
+                }
+                echo '</table>';
+                echo '<p style="margin-top:20px; color:#22c55e;">✓ Conectado a PostgreSQL - ' . count($productos) . ' productos</p>';
+            } else {
+                echo '<p>No hay productos en la base de datos</p>';
+            }
+        } catch (PDOException $e) {
+            echo '<p style="color:#ef4444">Error: ' . $e->getMessage() . '</p>';
+        }
+        ?>
+    </div>
+
+    <div class="footer">
+        <p>JSRepuestos DevOps Platform | Google Cloud Platform | CI/CD Pipeline | Docker Containers | PostgreSQL</p>
+        <p>© 2026 - Proyecto Sistemas Operativos II - Infraestructura Moderna</p>
+    </div>
+</div>
+
+<script>
+function showSection(section) {
+    const dashboard = document.getElementById('dashboard-section');
+    const productos = document.getElementById('productos-section');
+    const btnDash = document.getElementById('btn-dashboard');
+    const btnProd = document.getElementById('btn-productos');
+    
+    if (section === 'dashboard') {
+        dashboard.style.display = 'block';
+        productos.classList.remove('active');
+        btnDash.classList.add('active');
+        btnProd.classList.remove('active');
+    } else {
+        dashboard.style.display = 'none';
+        productos.classList.add('active');
+        btnDash.classList.remove('active');
+        btnProd.classList.add('active');
+    }
+}
+</script>
 </body>
 </html>
+EOF
+
+
+
+
+
+
+
+
+
+
