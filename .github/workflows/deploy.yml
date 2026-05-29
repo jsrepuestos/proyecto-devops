@@ -1,36 +1,24 @@
-name: Deploy to GCP VM
+name: Deploy
 
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H 34.70.144.55 >> ~/.ssh/known_hosts
-
-      - name: Test SSH Connection
-        run: |
-          ssh -i ~/.ssh/id_ed25519 jsrepuestosservicios@34.70.144.55 "echo '✅ SSH OK'"
-
-      - name: Deploy with Docker Compose
-        run: |
-          ssh -i ~/.ssh/id_ed25519 jsrepuestosservicios@34.70.144.55 << 'EOF'
-            cd ~/proyecto-devops || git clone https://github.com/jsrepuestos/proyecto-devops.git ~/proyecto-devops
+      - uses: actions/checkout@v4
+      
+      - name: Deploy to VM
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 34.134.244.161
+          username: jsrepuestosservicios
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          script: |
             cd ~/proyecto-devops
             git pull origin main
-            docker compose down
-            docker compose up -d --build
-            docker compose ps
-            echo "Despliegue completado con Base de Datos"
-          EOF
+            docker-compose down
+            docker-compose up -d --build
